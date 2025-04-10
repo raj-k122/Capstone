@@ -1,0 +1,5 @@
+venv/
+V1/
+videos/
+__pycache__/
+ML/LSTM/processed_pose_data/*
