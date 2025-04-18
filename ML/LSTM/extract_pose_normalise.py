@@ -95,8 +95,8 @@ def process_video_folder(video_folder, output_directory="pose_data"):
 if __name__ == "__main__":
     healthy_folder = "/Users/rajkulkarni/Documents/UTS 2025/Capstone/MediaPipe/videos/original footage/version 2 dataset (healthy)"  # Replace with your healthy video folder path
     hemiplegic_folder = "/Users/rajkulkarni/Documents/UTS 2025/Capstone/MediaPipe/videos/patients/patient #6/front"  # Replace with your hemiplegic video folder path
-    testing_folder = "/Users/rajkulkarni/Documents/UTS 2025/Capstone/MediaPipe/videos/original footage/testing/"
-    output_pose_dir = "processed_pose_data/hemiplegic/front/"
+    testing_folder = "/Users/rajkulkarni/Documents/UTS 2025/Capstone/MediaPipe/videos/original footage/testing/patient #7/"
+    output_pose_dir = "processed_pose_data/testing/"
 
     # Create the main output directory if it doesn't exist
     os.makedirs(output_pose_dir, exist_ok=True)
@@ -105,6 +105,6 @@ if __name__ == "__main__":
     # hemiplegic_output_dir = os.path.join(output_pose_dir, "hemiplegic/front")
 
 
-    process_video_folder(hemiplegic_folder, output_pose_dir)
+    process_video_folder(testing_folder, output_pose_dir)
 
     print("Pose data extraction and normalization complete. Check the 'processed_pose_data' folder.")
