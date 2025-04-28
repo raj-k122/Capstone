@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from create_training_data import load_pose_data_and_create_labels, preprocess_sequences
 
+import json
+
 #Load data
 pose_data_directory = "processed_pose_data"
 pose_sequences, labels = load_pose_data_and_create_labels(pose_data_directory, augment=True, augmentation_healthy_factor=50,augmentation_hemi_factor=250, noise_level=0.1)
@@ -24,7 +26,7 @@ def create_lstm_model(input_shape):
         Dropout(0.3),
         LSTM(32),
         Dropout(0.3),
-        Dense(1, activation='sigmoid')  # Binary classification (healthy/hemiplegic)
+        Dense(1, activation='sigmoid')
     ])
     optimizer = Adam(learning_rate=0.01)
     model.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
@@ -51,5 +53,33 @@ history = lstm_model.fit(
 lstm_model.save("hemiplegia_classifier_model.h5") #save model.
 # Evaluate the model on the test set
 loss, accuracy = lstm_model.evaluate(X_test, y_test)
+# Save the history as a JSON file
+history_dict = history.history  # history.history is a dictionary
+with open('history.json', 'w') as f:
+    json.dump(history_dict, f)
+# Plot and save training and validation accuracy
+plt.figure(figsize=(7, 5))
+plt.plot(history.history['accuracy'], label='Training Accuracy')
+plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
+plt.title('Accuracy over epochs')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.tight_layout()
+plt.savefig('accuracy_over_epochs.png', dpi=300)
+plt.show()
+
+# Plot and save training and validation loss
+plt.figure(figsize=(7, 5))
+plt.plot(history.history['loss'], label='Training Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.title('Loss over epochs')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
+plt.tight_layout()
+plt.savefig('loss_over_epochs.png', dpi=300)
+plt.show()
+
 print(f"Test Loss: {loss:.4f}")
 print(f"Test Accuracy: {accuracy:.4f}")

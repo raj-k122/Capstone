@@ -14,7 +14,7 @@ padded_pose_sequences = preprocess_sequences(pose_sequences)
 X_train, X_temp, y_train, y_temp = train_test_split(padded_pose_sequences, labels, test_size=0.3, random_state=42, stratify=labels)
 X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42, stratify=y_temp)
 
-model = load_model("training_runs/model_run_5/model_run_5.h5")
+model = load_model("training_runs/model_run_6/model_run_6.h5")
 # Evaluate the model on the test set
 loss, accuracy = model.evaluate(X_test, y_test)
 print(f"Test Loss: {loss:.4f}")

@@ -93,9 +93,9 @@ def process_video_folder(video_folder, output_directory="pose_data"):
             extract_and_normalize_pose(video_path, output_directory)
 
 if __name__ == "__main__":
-    healthy_folder = "/Users/rajkulkarni/Documents/UTS 2025/Capstone/MediaPipe/videos/original footage/version 2 dataset (healthy)"  # Replace with your healthy video folder path
-    hemiplegic_folder = "/Users/rajkulkarni/Documents/UTS 2025/Capstone/MediaPipe/videos/patients/patient #6/front"  # Replace with your hemiplegic video folder path
-    testing_folder = "/Users/rajkulkarni/Documents/UTS 2025/Capstone/MediaPipe/videos/original footage/testing/patient #7/"
+    healthy_folder = "/Users/rajkulkarni/Documents/UTS_2025/Capstone/MediaPipe/videos/original footage/version 2 dataset (healthy)"  # Replace with your healthy video folder path
+    hemiplegic_folder = "/Users/rajkulkarni/Documents/UTS_2025/Capstone/MediaPipe/videos/patients/patient #6/front"  # Replace with your hemiplegic video folder path
+    testing_folder = "/Users/rajkulkarni/Documents/UTS_2025/Capstone/MediaPipe/videos/original footage/testing/patient #9/"
     output_pose_dir = "processed_pose_data/testing/"
 
     # Create the main output directory if it doesn't exist

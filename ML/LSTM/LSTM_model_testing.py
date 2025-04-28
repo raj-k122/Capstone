@@ -3,11 +3,11 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # 1. Load your trained model
-model_path = 'training_runs/model_run_5/model_run_5.h5'
+model_path = 'training_runs/model_run_6/model_run_6.h5'
 loaded_model = keras.models.load_model(model_path)
 
 # 2. Load your new pose sequence NumPy array
-new_pose_sequence = np.load('processed_pose_data/testing/front_p7_testing_pose.npy') # Replace with the actual path
+new_pose_sequence = np.load('processed_pose_data/testing/front_p9_testing_pose.npy') # Replace with the actual path
 
 # 3. Get the max_length from the model summary
 max_length = 977
